@@ -4,6 +4,8 @@ public class CatsAndUnicorns {
     public static String catOrUnicorn;
     public static int whatItemSelected;
     public static boolean errorOccurred = false;
+    public static boolean errorInCategory = false;
+    public static boolean errorInNumber = false;
     static Cat myCat = new Cat();
     static Unicorn myUnicorn = new Unicorn();
 
@@ -37,6 +39,8 @@ public class CatsAndUnicorns {
                 myCat.madNoise();
             } else {
                 errorOccurred = true;
+                errorInNumber = true;
+
             }
         } else if (catOrUnicorn.equalsIgnoreCase("unicorn")) {
             System.out.println("Please enter the number 1 (talking unicorn), 2 (unicorn attack), 3 (unicorn defense), or 4 (healing unicorn).");
@@ -61,6 +65,7 @@ public class CatsAndUnicorns {
             }
         } else {
             errorOccurred = true;
+            errorInCategory = true;
         }
 
     }
@@ -70,8 +75,12 @@ public class CatsAndUnicorns {
         getWhatItemSelected();
         if (errorOccurred != false) {
             System.out.println("Sorry, but an error occurred.");
-            System.out.println("Did you enter \"cat\" or \"unicorn\" without the quotation marks?");
-            System.out.println("Did you enter the number 1, the number 2, the number 3, or the number 4?");
+            if (errorInCategory != false) {
+                System.out.println("Did you enter \"cat\" or \"unicorn\" without the quotation marks?");
+            }
+            if (errorInNumber != false) {
+                System.out.println("Did you enter the number 1, the number 2, the number 3, or the number 4?");
+            }
         }
     }
 }
